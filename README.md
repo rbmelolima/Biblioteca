@@ -8,3 +8,4 @@
 7. [Estrutura de dados usando C](./Estruturas%20de%20Dados%20Usando%20C%20(Tenenbaum).pdf)
 8. [Interação Homem Computador](./Intera%C3%A7%C3%A3o%20Homem%20Computador.pdf)
 9. [Introdução à arquitetura e design de software](./Introdu%C3%A7%C3%A3o%20%C3%A0%20Arquitetura%20e%20Design%20de%20Software%20-%20Casa%20do%20Codigo.pdf)
+10. [Sistemas digitais. Princípios e aplicações - 11ª Edição](./Sistemas%20Digitais%20-%20Princ%C3%ADpios%20e%20Aplica%C3%A7%C3%B5es.pdf)
