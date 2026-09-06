@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Digital de Computação & Tecnologia</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter / Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg text-slate-900 tracking-tight leading-tight">Biblioteca Digital</h1>
+          <p class="text-xs text-slate-500 font-medium">Acervo de Ciência da Computação</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-3 text-sm">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          10 Livros Disponíveis
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-12 pb-10 bg-gradient-to-b from-indigo-50/50 via-white to-slate-50 border-b border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-semibold mb-4 border border-indigo-100">
+          <span>📚 Material de Estudo & Referência</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Explore e baixe livros essenciais da Ciência da Computação.
+        </h2>
+        <p class="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed">
+          Tenha acesso direto aos principais clássicos sobre algoritmos, arquitetura de computadores, engenharia de software, redes e sistemas operacionais.
+        </p>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Pesquisar por título, autor ou assunto..." 
+            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-300 rounded-xl shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder:text-slate-400"
+          >
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="categoryFilter" class="px-4 py-3 bg-white border border-slate-300 rounded-xl shadow-sm text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all cursor-pointer">
+            <option value="all">Todas as categorias</option>
+            <option value="Arquitetura & Hardware">Arquitetura & Hardware</option>
+            <option value="Redes & Comunicação">Redes & Comunicação</option>
+            <option value="Algoritmos & Estruturas">Algoritmos & Estruturas</option>
+            <option value="Engenharia de Software">Engenharia de Software</option>
+            <option value="Sistemas Operacionais">Sistemas Operacionais</option>
+            <option value="Matemática">Matemática</option>
+            <option value="Design & IHC">Design & IHC</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content / Books Grid -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+        <span>Catálogo de Obras</span>
+        <span id="resultsCount" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">10</span>
+      </h3>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="booksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Livro 1 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Arquitetura e Organização de Computadores - 8ª Edição"
+           data-category="Arquitetura & Hardware"
+           data-tags="hardware william stallings processadores memoria computadores">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-100">
+              Arquitetura & Hardware
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 20.1 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Arquitetura e Organização de Computadores
+          </h4>
+          <p class="text-xs text-indigo-500 font-semibold mt-1">8ª Edição</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Referência completa sobre projeto estrutural, arquitetura de processadores, barramentos, hierarquia de memória e desempenho computacional.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Arquitetura e Organização de Computadores - 8ª Ed.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Arquitetura e Organização de Computadores - 8ª Ed.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 2 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Comunicação de Dados e Redes de Computadores"
+           data-category="Redes & Comunicação"
+           data-tags="redes forouzan protocolos tcp ip camadas comunicacao">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-sky-50 text-sky-700 border border-sky-100">
+              Redes & Comunicação
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 16.7 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Comunicação de Dados e Redes de Computadores
+          </h4>
+          <p class="text-xs text-sky-600 font-semibold mt-1">4ª Edição</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Estudo aprofundado do modelo OSI, pilha TCP/IP, transmissão de dados, enlaces, roteamento e segurança em redes.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Comunicação de Dados e Redes de Computadores_compressed (1).pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Comunicação de Dados e Redes de Computadores_compressed (1).pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 3 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Sistemas Operacionais - Projeto e Implementação"
+           data-category="Sistemas Operacionais"
+           data-tags="sistemas operacionais minix andrew tanenbaum woodhull kernel processos threads">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">
+              Sistemas Operacionais
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 3.8 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Sistemas Operacionais: Projeto e Implementação
+          </h4>
+          <p class="text-xs text-emerald-600 font-semibold mt-1">3ª Edição (Tanenbaum & Woodhull)</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            O clássico fundamental que ensina os conceitos internos de SO através do código e arquitetura do MINIX 3.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Sistemas Operacionais - Projeto e Implementação - Inclui CD-ROM - 3ª Ed.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Sistemas Operacionais - Projeto e Implementação - Inclui CD-ROM - 3ª Ed.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 4 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Elementos de Matemática Discreta para Computação"
+           data-category="Matemática"
+           data-tags="matematica discreta conjuntos logica grafos combinatoria computacao">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-amber-50 text-amber-700 border border-amber-100">
+              Matemática
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 1.4 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Elementos de Matemática Discreta
+          </h4>
+          <p class="text-xs text-amber-600 font-semibold mt-1">Para Computação</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Bases lógicas e matemáticas cruciais para computação: lógica proposicional, teoria dos conjuntos, relações e grafos.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Elementos de Matematica Discreta para computação.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Elementos de Matematica Discreta para computação.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 5 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Fundamentos de Programação - Algoritmos, Estruturas de Dados e Objetos"
+           data-category="Algoritmos & Estruturas"
+           data-tags="programacao logica algoritmos orientacao a objetos estruturas de dados">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-50 text-purple-700 border border-purple-100">
+              Algoritmos & Estruturas
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 9.2 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Fundamentos de Programação
+          </h4>
+          <p class="text-xs text-purple-600 font-semibold mt-1">Algoritmos, Estruturas de Dados e Objetos</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Introdução sólida às técnicas de programação, algoritmos estruturados, tipagem e conceitos de orientação a objetos.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Fundamentos de Programação.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Fundamentos de Programação.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 6 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Engenharia de Software"
+           data-category="Engenharia de Software"
+           data-tags="engenharia de software ian sommerville requisitos testes processos ageis scrum">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-rose-50 text-rose-700 border border-rose-100">
+              Engenharia de Software
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 17.7 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Engenharia de Software
+          </h4>
+          <p class="text-xs text-rose-600 font-semibold mt-1">9ª Edição (Ian Sommerville)</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            A principal referência em ciclo de vida de software, levantamento de requisitos, arquitetura, testes e metodologias ágeis.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Engenharia de Software - 9 edição.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Engenharia de Software - 9 edição.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 7 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Estruturas de Dados Usando C"
+           data-category="Algoritmos & Estruturas"
+           data-tags="estruturas de dados c tenenbaum pilhas filas arvores grafos listas encadeadas">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-purple-50 text-purple-700 border border-purple-100">
+              Algoritmos & Estruturas
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 6.8 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Estruturas de Dados Usando C
+          </h4>
+          <p class="text-xs text-purple-600 font-semibold mt-1">Aaron M. Tenenbaum</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            O guia definitivo para implementar pilhas, filas, árvores binárias, listas encadeadas e grafos em linguagem C.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Estruturas de Dados Usando C (Tenenbaum).pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Estruturas de Dados Usando C (Tenenbaum).pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 8 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Interação Homem Computador"
+           data-category="Design & IHC"
+           data-tags="ihc ux ui usabilidade interfaces design experiencia do usuario">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-teal-50 text-teal-700 border border-teal-100">
+              Design & IHC
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 5.7 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Interação Homem-Computador
+          </h4>
+          <p class="text-xs text-teal-600 font-semibold mt-1">UX & Usabilidade</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Princípios de design de interfaces, testes de usabilidade, heurísticas e experiência do usuário no desenvolvimento de sistemas.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Interação Homem Computador.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Interação Homem Computador.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 9 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Introdução à Arquitetura e Design de Software"
+           data-category="Engenharia de Software"
+           data-tags="arquitetura design patterns casa do codigo solid boas praticas">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-rose-50 text-rose-700 border border-rose-100">
+              Engenharia de Software
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 3.1 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Introdução à Arquitetura & Design de Software
+          </h4>
+          <p class="text-xs text-rose-600 font-semibold mt-1">Casa do Código</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Uma abordagem prática sobre modelagem, padrões de projeto, SOLID, coesão, acoplamento e decisões arquiteturais modernas.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Introdução à Arquitetura e Design de Software - Casa do Codigo.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Introdução à Arquitetura e Design de Software - Casa do Codigo.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+      <!-- Livro 10 -->
+      <div class="book-card group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-xl hover:border-indigo-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+           data-title="Sistemas Digitais - Princípios e Aplicações"
+           data-category="Arquitetura & Hardware"
+           data-tags="sistemas digitais circuitos logica booleana portas logicas microprocessadores">
+        <div>
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-100">
+              Arquitetura & Hardware
+            </span>
+            <span class="text-xs font-medium text-slate-500 flex items-center gap-1 bg-slate-100 px-2 py-0.5 rounded">
+              📄 33.5 MB
+            </span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-lg leading-snug group-hover:text-indigo-600 transition-colors">
+            Sistemas Digitais: Princípios e Aplicações
+          </h4>
+          <p class="text-xs text-indigo-500 font-semibold mt-1">11ª Edição</p>
+          <p class="text-xs text-slate-500 mt-2 line-clamp-3">
+            Guia completo de eletrônica digital, circuitos combinacionais e sequenciais, flip-flops, contadores e memórias.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2">
+          <a href="src/Sistemas Digitais - Princípios e Aplicações.pdf" target="_blank" class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            Visualizar
+          </a>
+          <a href="src/Sistemas Digitais - Princípios e Aplicações.pdf" download class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-200 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Download
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Empty State -->
+    <div id="noResults" class="hidden text-center py-16">
+      <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h4 class="text-base font-semibold text-slate-800">Nenhum livro encontrado</h4>
+      <p class="text-sm text-slate-500 mt-1">Tente ajustar o termo da busca ou selecione outra categoria.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Biblioteca Digital de Computação &copy; 2026. Todos os arquivos organizados na pasta <code class="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700">/src</code>.</p>
+    </div>
+  </footer>
+
+  <!-- Search & Filter Script -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const cards = document.querySelectorAll('.book-card');
+    const noResults = document.getElementById('noResults');
+    const resultsCount = document.getElementById('resultsCount');
+
+    function filterBooks() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const selectedCategory = categoryFilter.value;
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const category = card.getAttribute('data-category');
+        const tags = card.getAttribute('data-tags').toLowerCase();
+        
+        const matchesSearch = title.includes(searchTerm) || tags.includes(searchTerm);
+        const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      resultsCount.textContent = visibleCount;
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', filterBooks);
+    categoryFilter.addEventListener('change', filterBooks);
+  </script>
+</body>
+</html>
